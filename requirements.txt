@@ -1,2 +1,2 @@
-filemagic>=1.6
-tk
+# python-magic wraps libmagic and provides file type detection.
+python-magic>=0.4.27

@@ -20,18 +20,30 @@ import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 
 try:
-    import magic  # from the filemagic package
+    # Use the python-magic package for file type detection.  This wrapper
+    # automatically locates the libmagic shared library on most systems.
+    import magic  # provided by the `python-magic` package
 except ImportError as exc:
     raise RuntimeError(
-        "The `filemagic` package is required. Install it via `pip install filemagic` "
-        "and ensure libmagic is installed on your system."
+        "The `python-magic` package is required for file type detection. "
+        "Install it via `pip install python-magic`."
     ) from exc
 
 
 def detect_file_type(file_path: Path) -> str:
-    """Return a short description of the file's type using libmagic."""
-    with magic.Magic() as m:
-        return m.id_filename(str(file_path))
+    """Return a short description of the file's type using python-magic.
+
+    The `python-magic` library wraps the libmagic functionality and exposes
+    `magic.from_file` to obtain a human‑readable description of a file's
+    contents.  If detection fails, ``Unknown`` is returned.
+    """
+    try:
+        # `from_file` returns a textual description such as
+        # "JPEG image data" or "PDF document".  We cast to str to guard
+        # against unexpected non‑string return types.
+        return str(magic.from_file(str(file_path)))
+    except Exception:
+        return "Unknown"
 
 
 def assign_group(file_type: str) -> str:

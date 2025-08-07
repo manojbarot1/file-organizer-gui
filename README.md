@@ -8,8 +8,9 @@ management tool.
 ## Features
 
 * **Scan a directory:** Select a folder to scan, and the application will
-  inspect each file using the `filemagic` library to determine its type
-  (e.g., JPEG image, PDF document, plain text).
+  inspect each file using the `python‑magic` library (a wrapper around
+  `libmagic`) to determine its type (e.g., JPEG image, PDF document,
+  plain text).
 * **Display results:** The GUI shows a list of files along with their
   detected type.  This helps you see how your files are classified before
   making any changes.
@@ -26,7 +27,9 @@ management tool.
 
 2. **Install dependencies:** Create and activate a virtual environment (optional
    but recommended), then install Python packages listed in
-   `requirements.txt`:
+   `requirements.txt`.  The package list now uses `python‑magic` for
+   file type detection, so you don’t need to install any extra Tk
+   packages—the Tkinter module is part of the Python standard library.
    ```sh
    python3 -m venv venv
    source venv/bin/activate
