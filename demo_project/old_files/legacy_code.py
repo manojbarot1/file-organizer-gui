@@ -1,0 +1,2 @@
+# Old code
+print('legacy')
