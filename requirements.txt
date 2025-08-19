@@ -1,2 +1,6 @@
-# python-magic wraps libmagic and provides file type detection.
-python-magic>=0.4.27
+# Dependencies for AI File Organizer
+requests>=2.28.0
+pathlib>=1.0.1
+
+# Optional: python-magic for advanced file type detection (not used in current version)
+# python-magic>=0.4.27
