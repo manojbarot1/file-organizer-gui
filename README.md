@@ -55,6 +55,19 @@ All file operations are performed via Python’s `shutil` and will not delete
 anything—files are simply moved into the new folders.  Always test with
 non‑critical files first.
 
+## AI‑assisted organizer (optional)
+
+An alternative GUI that suggests paths using your local folder taxonomy and a local model (Ollama) is available as `ai_organizer.py`.
+
+- Start Ollama (`ollama serve`) and pull a model (for example `llama3.1`).
+- Run:
+
+```sh
+python ai_organizer.py
+```
+
+Then choose Backend "Local (Ollama)", pick a model, select a folder, and click "Scan with AI". The app builds a taxonomy from your existing folders, passes neighbor context to the model, and snaps suggestions to existing directories when possible.
+
 ## License
 
 This example is provided under the Apache 2.0 license.  See the `LICENSE`
